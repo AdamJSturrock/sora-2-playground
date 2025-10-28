@@ -579,6 +579,7 @@ export default function HomePage() {
         // Note: Only clear if we're about to create a new one or unmounting
         return undefined;
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // adam
     }, [activeJobIdsKey, clientPasswordHash, clientApiKey, apiMode]);
 
     // Resume active jobs on initial load
