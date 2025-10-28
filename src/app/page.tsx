@@ -576,10 +576,14 @@ export default function HomePage() {
         }
 
         // Cleanup when effect re-runs or component unmounts
-        // Note: Only clear if we're about to create a new one or unmounting
-        return undefined;
+        return () => {
+            if (pollingInterval) {
+                console.log('Cleaning up polling interval');
+                clearInterval(pollingInterval);
+            }
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeJobIdsKey, clientPasswordHash, clientApiKey, apiMode]);
+    }, [activeJobIdsKey, clientPasswordHash, clientApiKey, apiMode, videoService]);
 
     // Resume active jobs on initial load
     React.useEffect(() => {
